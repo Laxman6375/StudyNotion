@@ -1,0 +1,32 @@
+
+export default function IconBtn({
+  text,
+  onClick,
+  children,
+  disabled,
+  outline = false,
+  customClasses,
+  type,
+}) {
+  return (
+    <div>
+      <button
+        disabled={disabled}
+        onClick={onClick}
+        className={`flex  flex-row items-center ${
+          outline ? "border border-yellow-50 bg-transparent" : "bg-yellow-50"
+        } cursor-pointer gap-x-2 rounded-md py-1 lg:py-2 px-3 lg:px-5 font-semibold text-richblack-900 ${customClasses}`}
+        type={type}
+      >
+        {children ? (
+          <>
+            <span className={`${outline && "text-yellow-50"}`}> {text}</span>
+            {children}
+          </>
+        ) : (
+          text
+        )}
+      </button>
+    </div>
+  );
+}
