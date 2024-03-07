@@ -74,7 +74,7 @@ const CourseInformationForm = () => {
 
   //handle next button click
   const onSubmit = async (data) => {
-     console.log(data)
+    //  console.log(data)
 
     if (editCourse) {
       // const currentValues = getValues()
@@ -116,7 +116,7 @@ const CourseInformationForm = () => {
         if (currentValues.courseImage !== course.thumbnail) {
           formData.append("thumbnailImage", data.courseImage);
         }
-        console.log("Edit Form data: ", formData);
+        // console.log("Edit Form data: ", formData);
         setLoading(true);
         const result = await editCourseDetails(formData, token);
         setLoading(false);

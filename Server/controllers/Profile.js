@@ -56,7 +56,7 @@ exports.deleteAccount = async (req, res) => {
   try {
     //get id
     const id = req.user.id;
-    console.log("Printing Id:", id);
+    // console.log("Printing Id:", id);
     //validation
     const user = await User.findById(id);
     if (!user) {
@@ -119,7 +119,7 @@ exports.updateDisplayPicture = async (req, res) => {
       1000,
       1000
     );
-    console.log(image);
+    // console.log(image);
     const updatedProfile = await User.findByIdAndUpdate(
       { _id: userId },
       { image: image.secure_url },

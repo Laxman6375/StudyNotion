@@ -42,7 +42,7 @@ const NavBar = ({ setProgress }) => {
     } catch (error) {
       // setsublinks(JSON.parse(localStorage.getItem("sublinks")));
       // console.log("could not fetch sublinks",localStorage.getItem("sublinks"));
-      console.log(error);
+      // console.log(error);
     }
   };
   useEffect(() => {

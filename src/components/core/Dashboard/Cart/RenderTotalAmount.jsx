@@ -14,7 +14,7 @@ const RenderTotalAmount = () => {
 
   const handleBuyCourse = () => {
     const courseId = cart.map((course) => course._id);
-    console.log("Bought these course:", courseId);
+    // console.log("Bought these course:", courseId);
     //Todo: api integrates => handle api payment gateway
     if (token) {
       buyCourse(token, [courseId], user, navigate, dispatch);

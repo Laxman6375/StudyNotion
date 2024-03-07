@@ -1,5 +1,6 @@
 import { FaCheck } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import React from "react";
 
 import CourseInformationForm from "./CourseInformation/CourseInformationForm";
 import CourseBuilderForm from "./Coursebuilder/CourseBuilderForm";
@@ -27,8 +28,8 @@ export default function RenderSteps() {
     <>
       <div className="relative mb-2 flex w-full justify-center px-10">
         {steps.map((item) => (
-          <>
-            <div className="flex flex-col items-center " key={item.id}>
+          <React.Fragment key={item.id}>
+            <div className="flex flex-col items-center " >
               <button
                 className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
                   step === item.id
@@ -52,16 +53,16 @@ export default function RenderSteps() {
                 ></div>
               </>
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
 
       <div className="relative mb-16 flex w-full select-none justify-between lg:px-10">
         {steps.map((item) => (
-          <>
+          <React.Fragment key={item.id}>
             <div
               className="flex min-w-[130px] flex-col lg:items-center gap-y-2"
-              key={item.id}
+              
             >
               <p
                 className={` text-xs lg:text-sm ${
@@ -71,7 +72,7 @@ export default function RenderSteps() {
                 {item.title}
               </p>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
       {/* Render specific component based on current step */}

@@ -16,7 +16,7 @@ import { HiMiniClock } from "react-icons/hi2";
 import { FaCheckCircle } from "react-icons/fa";
 
 const CoursesTable = ({ courses, setCourses }) => {
-  console.log("corses length", courses.length - 1);
+  // console.log("corses length", courses.length - 1);
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);

@@ -35,8 +35,8 @@ const TimelineSection = () => {
         <div className=" w-full lg:w-[45%] flex flex-col gap-8 lg:gap-3">
           {timeline.map((element, index) => {
             return (
-              <>
-                <div className="flex flex-row gap-6" key={index}>
+              <React.Fragment key={index}>
+                <div className="flex flex-row gap-6">
                   <div className="w-[52px] h-[52px] flex items-center justify-center bg-white rounded-full shadow-lg ">
                     <img src={element.Logo} alt="Logo images" />
                   </div>
@@ -54,7 +54,7 @@ const TimelineSection = () => {
                     timeline.length - 1 === index ? "hidden" : "lg:block"
                   } w-6 h-14 border-dotted border-r border-richblack-100`}
                 ></div>
-              </>
+              </React.Fragment>
             );
           })}
         </div>

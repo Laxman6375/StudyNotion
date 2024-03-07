@@ -21,12 +21,12 @@ export default function EditProfile() {
   } = useForm();
 
   const submitProfileForm = async (data) => {
-    console.log("data", data);
+    // console.log("data", data);
     try {
        dispatch(updateProfile(token, data));
       
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message);
+      // console.log("ERROR MESSAGE - ", error.message);
     }
   };
 

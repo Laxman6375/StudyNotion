@@ -40,7 +40,7 @@ const CourseDetails = () => {
   useEffect(() => {
     const getCourseDetails = async () => {
       const response = await fetchCourseDetails(courseId, dispatch);
-      console.log("getCourseDetails -> response", response);
+      // console.log("getCourseDetails -> response", response);
       if (response) {
         setCourseDetail(response);
       }
@@ -52,7 +52,7 @@ const CourseDetails = () => {
     if (courseDetail?.data[0]?.ratingAndReviews?.length > 0) {
       const count = GetAvgRating(courseDetail?.data[0]?.ratingAndReviews);
       setAvgReviewCount(count);
-      console.log("getCourseDetails -> count", parseInt(count));
+      // console.log("getCourseDetails -> count", parseInt(count));
     }
   }, [courseDetail?.data[0]?.ratingAndReviews]);
 
@@ -71,7 +71,7 @@ const CourseDetails = () => {
       const Enrolled = courseDetail?.data[0]?.studentEnrolled?.find(
         (student) => student === user?._id
       );
-      console.log("CourseDetails -> Enrolled", Enrolled);
+      // console.log("CourseDetails -> Enrolled", Enrolled);
       if (Enrolled) {
         setAlreadyEnrolled(true);
       }

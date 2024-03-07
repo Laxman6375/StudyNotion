@@ -32,7 +32,7 @@ export async function buyCourse(
   navigate,
   dispatch
 ) {
-  console.log("buyCourse -> courses", courses);
+  // console.log("buyCourse -> courses", courses);
   const toastId = toast.loading(
     "Please wait while we redirect you to payment gateway",
     {
@@ -58,11 +58,11 @@ export async function buyCourse(
     );
     if (!orderResponse.data.success) {
       toast.error(orderResponse.data.message);
-      console.log("buyCourse -> orderResponse", orderResponse);
+      // console.log("buyCourse -> orderResponse", orderResponse);
       toast.dismiss(toastId);
       return;
     }
-    console.log("buyCourse -> orderResponse", orderResponse);
+    // console.log("buyCourse -> orderResponse", orderResponse);
     const options = {
       key: process.env.REACT_APP_RAZORPAY_KEY,
       currency: orderResponse.data.message.currency,
@@ -92,13 +92,13 @@ export async function buyCourse(
     paymentObject.open();
     paymentObject.on("payment.failed", function (response) {
       toast.error("Payment Failed");
-      console.log(response.error);
+      // console.log(response.error);
     });
     toast.dismiss(toastId);
   } catch (error) {
     toast.dismiss(toastId);
-    toast.error("Something went wrong");
-    console.log("buyCourse -> error", error);
+    toast.error(error.response.data.message);
+    // console.log("buyCourse -> error", error);
   }
 }
 
@@ -120,12 +120,12 @@ async function sendPaymentSuccessEmail(response, amount, token) {
       }
     );
   } catch (error) {
-    console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
+    // console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
   }
 }
 
 async function verifyPayment(bodyData, token, navigate, dispatch) {
-  console.log('bodydata',bodyData);
+  // console.log('bodydata',bodyData);
   const toastId = toast.loading("Verifying Payment....");
   dispatch(setPaymentLoading(true));
   try {
@@ -140,7 +140,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
     navigate("/dashboard/enrolled-courses");
     dispatch(resetCart());
   } catch (error) {
-    console.log("PAYMENT VERIFY ERROR....", error);
+    // console.log("PAYMENT VERIFY ERROR....", error);
     toast.error("Could not verify Payment");
   }
   toast.dismiss(toastId);

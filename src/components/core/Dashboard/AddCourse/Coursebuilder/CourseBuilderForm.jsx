@@ -77,7 +77,7 @@ const CourseBuilderForm = () => {
         },
         token
       );
-      console.log("create", result);
+      // console.log("create", result);
     }
     if (result) {
       //console.log("section result", result)

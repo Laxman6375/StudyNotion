@@ -46,12 +46,12 @@ const Sidebar = () => {
                 btn1Text: "Logout",
                 btn2Text: "Cancel",
                 btn1Handler: () => {
-                  console.log("Logout handler called");
+                  // console.log("Logout handler called");
                   dispatch(logout(navigate));
                 },
                 btn2Handler: () => {
                   setConfirmationModal(null);
-                  console.log("cancel button clicked");
+                  // console.log("cancel button clicked");
                 },
               })
             }

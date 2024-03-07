@@ -161,14 +161,14 @@ const VideoDetails = () => {
 
   
   const handleLectureCompletion = async () => {
-    console.log("Marking lecture as completed...");
+    // console.log("Marking lecture as completed...");
     setLoading(true);
     try {
       const res = await markLectureAsComplete(
         { courseId: courseId, subsectionId: subSectionId },
         token
       );
-      console.log("Marking completed:", res);
+      // console.log("Marking completed:", res);
       if (res) {
         dispatch(updateCompletedLectures(subSectionId));
       }

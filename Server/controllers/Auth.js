@@ -31,7 +31,7 @@ exports.sendOTP = async (req, res) => {
       lowerCaseAlphabets: false,
       specialChars: false,
     });
-    console.log("otp generated successfully", otp);
+    // console.log("otp generated successfully", otp);
 
     //check unique otp or not
     let result = await OTP.findOne({ otp: otp });
@@ -49,7 +49,7 @@ exports.sendOTP = async (req, res) => {
 
     //create an entry for otp
     const otpBody = await OTP.create(otpPayload);
-    console.log(otpBody);
+    // console.log(otpBody);
 
     //return response successful
     res.status(200).json({
@@ -58,7 +58,7 @@ exports.sendOTP = async (req, res) => {
       otp,
     });
   } catch (error) {
-    console.log("error occured while generating otp", error);
+    // console.log("error occured while generating otp", error);
     return res.status(500).json({
       success: false,
       message: error.message,
@@ -116,7 +116,7 @@ exports.signUp = async (req, res) => {
     const recentOtp = await OTP.find({ email })
       .sort({ createdAt: -1 })
       .limit(1);
-    console.log(recentOtp);
+    // console.log(recentOtp);
 
     //validate otp
     if (recentOtp.length === 0) {
@@ -168,7 +168,7 @@ exports.signUp = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.log("error occured while signup", error);
+    // console.log("error occured while signup", error);
     return res.status(500).json({
       success: false,
       message: "User can't be registered please try again",
@@ -231,7 +231,7 @@ exports.login = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log("error occured while login", error);
+    // console.log("error occured while login", error);
     return res.status(500).json({
       success: false,
       message: "Login failure please try again",
@@ -279,7 +279,7 @@ exports.changePassword = async (req, res) => {
           `Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
         )
       );
-      console.log("Email sent successfully:", emailResponse.response);
+      // console.log("Email sent successfully:", emailResponse.response);
     } catch (error) {
       // If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
       console.error("Error occurred while sending email:", error);

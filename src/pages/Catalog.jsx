@@ -29,11 +29,11 @@ const Catalog = () => {
       try {
         if (categoryId) {
           const res = await getCatalogaPageData(categoryId);
-           console.log("Printing res", res);
+          //  console.log("Printing res", res);
           setCatalogPageData(res);
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     getCategoryDetails();

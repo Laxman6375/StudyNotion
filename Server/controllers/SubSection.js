@@ -37,7 +37,7 @@ exports.createSubSection = async (req, res) => {
       { new: true }
     ).populate("subSection");
     //todo: log updated section here , after adding populate query
-    console.log(updatedSection);
+    // console.log(updatedSection);
     //return res
     return res.status(200).json({
       success: true,
@@ -45,7 +45,7 @@ exports.createSubSection = async (req, res) => {
       data:updatedSection,
     });
   } catch (error) {
-    console.log("error", error);
+    // console.log("error", error);
     return res.status(500).json({
       success: false,
       message: "Internal Server Error",
@@ -137,7 +137,7 @@ exports.deleteSubSection = async (req, res) => {
       message: "Subsection deleted successfully",
     });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     return res.status(500).json({
       success: false,
       message: "An error occurred while deleting the SubSection",

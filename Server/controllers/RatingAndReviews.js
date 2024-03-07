@@ -50,7 +50,7 @@ exports.createRating = async (req, res) => {
       },
       { new: true }
     );
-    console.log("updatedCourseDetails", updatedCourseDetails);
+    // console.log("updatedCourseDetails", updatedCourseDetails);
     //return response
     return res.status(201).json({
       success: true,
@@ -58,7 +58,7 @@ exports.createRating = async (req, res) => {
       ratingReview,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(400).json({
       success: true,
       message: error.message,
@@ -100,7 +100,7 @@ exports.getAverageRating = async (req, res) => {
       averageRating: 0,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(500).json({
       success: false,
       message: error.message,
@@ -129,7 +129,7 @@ exports.getAllRatings = async (req, res) => {
       data: allReviews,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(500).json({
       success: false,
       message: error.message,

@@ -32,7 +32,7 @@ exports.capturePayment = async (req, res) => {
       }
 
       const uid = new mongoose.Types.ObjectId(userId);
-      console.log('uid',uid);
+      // console.log('uid',uid);
       if (course.studentEnrolled.includes(uid)) {
         return res.json({
           success: false,
@@ -42,7 +42,7 @@ exports.capturePayment = async (req, res) => {
 
       totalAmount += course.price;
     } catch (error) {
-      console.log(`Error in fetching course : ${error}`);
+      // console.log(`Error in fetching course : ${error}`);
       return res.status(500).json({
         success: false,
         message: error.message,
@@ -63,7 +63,7 @@ exports.capturePayment = async (req, res) => {
       message: paymentResponse,
     });
   } catch (error) {
-    console.log("Payment Error: ", error);
+    // console.log("Payment Error: ", error);
     return res.status(500).json({
       success: false,
       message: "Could not Initiate Order",
@@ -73,7 +73,7 @@ exports.capturePayment = async (req, res) => {
 
 //verify the payment
 exports.verifyPayment = async (req, res) => {
-  console.log('reqbody',req.body);
+  // console.log('reqbody',req.body);
   const razorpay_order_id = req.body?.razorpay_order_id;
   const razorpay_payment_id = req.body?.razorpay_payment_id;
   const razorpay_signature = req.body?.razorpay_signature;
@@ -162,9 +162,9 @@ const enrollStudents = async (courses, userId, res) => {
           `${enrolledStudent.firstName} ${enrolledStudent.lastName}`
         )
       );
-      console.log("Email sent successfully", emailResponse.response);
+      // console.log("Email sent successfully", emailResponse.response);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return res.status(500).json({
         success: false,
         message: error.message,
@@ -199,7 +199,7 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
       )
     );
   } catch (error) {
-    console.log("error", error);
+    // console.log("error", error);
     return res.status(400).json({
       success: false,
       message: "Could not send email",

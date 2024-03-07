@@ -22,7 +22,7 @@ exports.createCourse = async (req, res) => {
       instructions,
       status,
     } = req.body;
-    console.log("req files",req.files)
+    // console.log("req files",req.files)
 
     //get thumbnail
     const thumbnail = req.files.thumbnailImage;
@@ -50,7 +50,7 @@ exports.createCourse = async (req, res) => {
     const instructorDetails = await User.findById(userId, {
       accountType: "Instructor",
     });
-    console.log("instructor details", instructorDetails);
+    // console.log("instructor details", instructorDetails);
 
     //todo: Verify that userId and instructorDetails._id are same or different ?
 
@@ -75,7 +75,7 @@ exports.createCourse = async (req, res) => {
       thumbnail,
       process.env.FOLDER_NAME
     );
-    console.log(thumbnailImage);
+    // console.log(thumbnailImage);
 
     //create an entry for new Course
     const newCourse = await Course.create({
@@ -141,7 +141,7 @@ exports.editCourse = async (req, res) => {
 
     // If Thumbnail Image is found, update it
     if (req.files) {
-      console.log("thumbnail update")
+      // console.log("thumbnail update")
       const thumbnail = req.files.thumbnailImage
       const thumbnailImage = await uploadImageToCloudinary(
         thumbnail,
@@ -275,7 +275,7 @@ exports.getCourseDetails = async (req, res) => {
       data: courseDetails,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(400).json({
       success: false,
       message: error.message,
