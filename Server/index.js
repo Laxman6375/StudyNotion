@@ -22,16 +22,17 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: JSON.parse(process.env.CORS_ORIGIN),
     credentials: true,
+    maxAge: 14400,
   })
 );
 
 app.use(
-    fileUpload({
-        useTempFiles: true,
-        tempFileDir: "/tmp"
-    })
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp",
+  })
 );
 
 //cloudinary connection
@@ -45,12 +46,12 @@ app.use("/api/v1/course", courseRoutes);
 
 //default route
 app.get("/", (req, res) => {
-    return res.json({
-        success: true,
-        message: "Your server is up and running...."
-    });
+  return res.json({
+    success: true,
+    message: "Your server is up and running....",
+  });
 });
 
 app.listen(PORT, () => {
-     console.log(`App is running at ${PORT}`);
-})
+  console.log(`App is running at ${PORT}`);
+});
