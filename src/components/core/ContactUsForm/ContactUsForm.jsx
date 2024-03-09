@@ -28,7 +28,7 @@ const ContactUsForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   const submitContactForm = async (data) => {
-    console.log(data);
+    // console.log(data);
     dispatch(contactUsMail(data));
   };
   return (

@@ -16,7 +16,7 @@ export function contactUsMail(data) {
         countryCode: data.countrycode,
         message: data.message,
       };
-        console.log("options : ", options);
+        // console.log("options : ", options);
         
       const response = await apiConnector("POST", CONTACT_US_API, options);
 
