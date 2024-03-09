@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { apiConnector } from "../../../services/apiconnector";
-import { contactusEndpoint } from "../../../services/apis";
+
 import countryCode from "../../../data/countrycode.json";
+import { useForm } from "react-hook-form";
+import { contactUsMail } from "../../../services/operations/contactUsApi";
+import { useDispatch } from "react-redux";
 
 const ContactUsForm = () => {
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -13,37 +15,22 @@ const ContactUsForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
-  const submitContactForm = async (data) => {
-     console.log("DATA:", data);
-    try {
-      setLoading(true);
-      const response = await apiConnector(
-        "POST",
-        contactusEndpoint.CONTACT_US_API,
-        data
-      );
-       console.log("Loging Response", response);
-      setLoading(false);
-    } catch (error) {
-       console.log("Error:", error.message);
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
     if (isSubmitSuccessful) {
-      reset(
-        {
-          email: "",
-          firstName: "",
-          lastName: "",
-          message: "",
-          phoneNo: "",
-        },
-        [reset, isSubmitSuccessful]
-      );
+      reset({
+        email: "",
+        firstName: "",
+        lastName: "",
+        message: "",
+        phoneNo: "",
+      });
     }
-  });
+  }, [isSubmitSuccessful, reset]);
+
+  const submitContactForm = async (data) => {
+    console.log(data);
+    dispatch(contactUsMail(data));
+  };
   return (
     <form className=" w-full" onSubmit={handleSubmit(submitContactForm)}>
       <div className="flex flex-col gap-9 ">
@@ -125,8 +112,8 @@ const ContactUsForm = () => {
                 >
                   {countryCode.map((data, index) => {
                     return (
-                      <option  key={index} value={data.code}>
-                        {data.code}  - {data.country}
+                      <option key={index} value={data.code}>
+                        {data.code} - {data.country}
                       </option>
                     );
                   })}
@@ -151,15 +138,7 @@ const ContactUsForm = () => {
                 />
               </div>
             </div>
-            {
-              errors.phoneNo && (
-                <span>
-                  {
-                    errors.phoneNo.message
-                  }
-                </span>
-              )
-            }
+            {errors.phoneNo && <span>{errors.phoneNo.message}</span>}
           </div>
         </div>
 
@@ -185,7 +164,7 @@ const ContactUsForm = () => {
 
         <button
           className="yellowButton bg-yellow-50 text-richblack-900"
-          type="Submit"
+          type="submit"
         >
           Send Message
         </button>
