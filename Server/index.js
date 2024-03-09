@@ -22,9 +22,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://studynotionlucky.netlify.app",
+    origin: ["https://studynotionlucky.netlify.app", "http://localhost:3000"],
   })
 );
+
 
 app.use(
   fileUpload({

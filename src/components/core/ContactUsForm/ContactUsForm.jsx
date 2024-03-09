@@ -14,7 +14,7 @@ const ContactUsForm = () => {
   } = useForm();
 
   const submitContactForm = async (data) => {
-    // console.log("DATA:", data);
+     console.log("DATA:", data);
     try {
       setLoading(true);
       const response = await apiConnector(
@@ -22,10 +22,10 @@ const ContactUsForm = () => {
         contactusEndpoint.CONTACT_US_API,
         data
       );
-      // console.log("Loging Response", response);
+       console.log("Loging Response", response);
       setLoading(false);
     } catch (error) {
-      // console.log("Error:", error.message);
+       console.log("Error:", error.message);
       setLoading(false);
     }
   };
